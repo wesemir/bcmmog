@@ -28,6 +28,8 @@ package ua.com.syo.bcnettest.controller {
 			Model.instance.init();
 			UIManager.instance.init();
 			Logger.INFO("Controller initialized");
+			
+			GameplayController.instance.init(UIManager.instance.stageView);
 		}
 	}
 }
