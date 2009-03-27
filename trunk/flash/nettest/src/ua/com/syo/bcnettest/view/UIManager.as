@@ -20,16 +20,13 @@ package ua.com.syo.bcnettest.view {
 			return _instance;
 		}
 		
-		private var stageView:StageView;
+		public var stageView:StageView;
 		
 		public function init():void {
 			stageView = new StageView();
 			addChild(stageView);
 			
 			buildStage();
-			
-			var t:Tank = new Tank("1");
-			stageView.addObject(t, 1 * StageData.cellW, 1 * StageData.cellH);
 		}
 		
 		public function buildStage():void {
