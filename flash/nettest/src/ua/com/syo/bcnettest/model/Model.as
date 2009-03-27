@@ -25,7 +25,6 @@ package ua.com.syo.bcnettest.model {
 		public function init():void {
 			//Logger.DEBUG("Model initialized");
 			ServerProxy.instance.connect();
-			
 		}
 	}
 }
