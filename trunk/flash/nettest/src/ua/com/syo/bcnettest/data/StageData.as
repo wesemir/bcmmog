@@ -69,6 +69,7 @@ package ua.com.syo.bcnettest.data {
 					counter++;
 				}
 			}
+			isParse = true;
 		}	
 	}
 }
