@@ -2,11 +2,11 @@ package ua.com.syo.bcnettest.data {
 
 	public class StageData {
 		
-		public static var stageW:int = 20;
-		public static var stageH:int = 20;
+		public static var stageW:int = 10;
+		public static var stageH:int = 10;
 		
-		public static var cellW:int = 16;
-		public static var cellH:int = 16;
+		public static var cellW:int = 32;
+		public static var cellH:int = 32;
 		
 		private static var mArray:Array;
 		
