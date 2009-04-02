@@ -45,7 +45,7 @@ package ua.com.syo.utils.log {
 		/**
 		 * creates the panel on the sprite
 		 */
-		private function create(barH:Number = 20 , outputH:Number = 100):void {
+		private function create(barH:Number = 20 , outputH:Number = 50):void {
 			// active bar
 			var activeBar:Sprite = new Sprite();
 			activeBar.graphics.beginFill(0xAAAAAA, 0.6);

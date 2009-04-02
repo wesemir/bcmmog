@@ -8,9 +8,9 @@ package ua.com.syo.bcnettest.model.stage {
 	public class Tank extends Sprite {
 		
 		public var id:String;
-		public var _direction:int = 2;
+		private var _direction:int = 2;
 		
-		public var speed:int = 5;
+		public var speed:int = 1;
 		
 		public var dx:int = 0;
 		public var dy:int = 0;
@@ -25,8 +25,12 @@ package ua.com.syo.bcnettest.model.stage {
 		
 		private var tf:TextField;
 		
-		public function Tank(id:String) {
+		public var isUser:Boolean = false;
+		
+		public function Tank(id:String, isU:Boolean) {
 			this.id = id;
+			this.isUser = isU;
+			
 			var r:Shape = new Shape();
 			r.graphics.beginFill(0xcccccc, 1);
 			r.graphics.drawRect(1, 1, StageData.cellW - 2, StageData.cellH - 2);
@@ -34,6 +38,7 @@ package ua.com.syo.bcnettest.model.stage {
 			
 			tf = new TextField();
 			tf.text = id;
+			tf.selectable = false;
 			addChild(tf);
 		}
 		
@@ -68,49 +73,49 @@ package ua.com.syo.bcnettest.model.stage {
 				StageData.setCellId("|", Math.round(x / StageData.cellW), Math.round(y / StageData.cellH))
 				
 			} else {
-				x = Math.round( x / StageData.cellW ) *  StageData.cellW;
-				y = Math.round( y / StageData.cellH ) *  StageData.cellH;
-				
-				direction = Math.round(Math.random()*3) +1;
-				dirChangeDelay = Math.round(Math.random()*200);
+				if (!isUser) {
+					direction = Math.round(Math.random()*3) +1;
+					dirChangeDelay = Math.round(Math.random()*200);
+				}
 				
 			}
-			
-			if (-- dirChangeDelay < 0) {
-				direction = Math.round(Math.random()*3);
-				dirChangeDelay = Math.round(Math.random()*200);
+			if (!isUser) {
+				if (-- dirChangeDelay < 0) {
+					direction = Math.round(Math.random()*3);
+					dirChangeDelay = Math.round(Math.random()*200);
+				}
 			}
 		}
 		
 		public function set direction(value:int):void {
-			_direction = value;
-			//tf.text = value.toString();
-			switch (_direction) {
-				// up
-				case 1:
-					dx = 0; 
-					dy = -1; 
-					x = Math.round( x / StageData.cellW ) *  StageData.cellW;
-					break;
-				// right	
-				case 2:
-					dx = 1; 
-					dy = 0; 
-					y = Math.round( y / StageData.cellH ) *  StageData.cellH;
-					break;
-				// down
-				case 3:
-					dx = 0; 
-					dy = 1; 
-					x = Math.round( x / StageData.cellW ) *  StageData.cellW;
-					break;
-				// left	
-				case 4:
-					dx = -1; 
-					dy = 0; 
-					y = Math.round( y / StageData.cellH ) *  StageData.cellH;
-					break;
-			}
+				_direction = value;
+				//tf.text = value.toString();
+				switch (_direction) {
+					// up
+					case 1:
+						dx = 0; 
+						dy = -1; 
+						x = Math.round( x / StageData.cellW ) *  StageData.cellW;
+						break;
+					// right	
+					case 2:
+						dx = 1; 
+						dy = 0; 
+						y = Math.round( y / StageData.cellH ) *  StageData.cellH;
+						break;
+					// down
+					case 3:
+						dx = 0; 
+						dy = 1; 
+						x = Math.round( x / StageData.cellW ) *  StageData.cellW;
+						break;
+					// left	
+					case 4:
+						dx = -1; 
+						dy = 0; 
+						y = Math.round( y / StageData.cellH ) *  StageData.cellH;
+						break;
+				}
 			
 		}
 

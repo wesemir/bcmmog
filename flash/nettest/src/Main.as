@@ -11,7 +11,7 @@ package {
 		
 		public function Main() {
 			// container for logger panel 
-			var loggerContainer:Sprite = Logger.init(this, false, true, true);
+			var loggerContainer:Sprite = Logger.init(this, true, true, true);
 			
 			Controller.instance.init();
 			

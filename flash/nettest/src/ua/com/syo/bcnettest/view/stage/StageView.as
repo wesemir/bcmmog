@@ -1,15 +1,18 @@
 package ua.com.syo.bcnettest.view.stage {
 	import flash.display.Sprite;
-	import flash.utils.Dictionary;
+	import flash.events.Event;
+	import flash.events.KeyboardEvent;
 	
 	import ua.com.syo.bcnettest.data.StageData;
 	import ua.com.syo.bcnettest.model.stage.SimpleCell;
 	import ua.com.syo.bcnettest.model.stage.Tank;
+	import ua.com.syo.utils.log.Logger;
 
 	public class StageView extends Sprite {
 		
 		private var mapContainer:Sprite;
 		private var objectsContainer:Sprite;
+		public var userTank:Tank;
 		
 		public function StageView() {
 			
@@ -18,6 +21,7 @@ package ua.com.syo.bcnettest.view.stage {
 			
 			objectsContainer = new Sprite();
 			addChild(objectsContainer);
+			addEventListener(Event.ACTIVATE, activateHandler);
 		}
 		
 		public function build():void {
@@ -38,11 +42,43 @@ package ua.com.syo.bcnettest.view.stage {
 			objectsContainer.addChild(t);
 			t.x = x;
 			t.y = y;
+			if (t.isUser) {
+				initListeners();
+				userTank = t;
+			}
 		}
+		
 		
 		public function removeObject(t:Tank):void {
 			objectsContainer.removeChild(t);
 		}
+		
+		private function activateHandler(event:Event):void {
+			stage.focus = this;
+		}
+		
+		private function initListeners():void {
+			addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler);
+		}
+		
+		private function keyDownHandler(event:KeyboardEvent):void {
+			Logger.DEBUG(event.keyCode);
+			switch (event.keyCode) {
+				case 38:
+					userTank.direction = 1;
+					break;
+				case 39:
+					userTank.direction = 2;
+					break;
+				case 40:
+					userTank.direction = 3;
+					break;
+				case 37:
+					userTank.direction = 4;
+					break;			
+			}
+		}
+
 
 	}
 }

@@ -1,7 +1,5 @@
 package ua.com.syo.bcnettest.controller {
 	import flash.events.EventDispatcher;
-	import flash.events.KeyboardEvent;
-	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
 	import flash.utils.Dictionary;
 	import flash.utils.Timer;
@@ -9,7 +7,6 @@ package ua.com.syo.bcnettest.controller {
 	import ua.com.syo.bcnettest.data.StageData;
 	import ua.com.syo.bcnettest.model.stage.Tank;
 	import ua.com.syo.bcnettest.view.stage.StageView;
-	import ua.com.syo.utils.log.Logger;
 
 	public class GameplayController extends EventDispatcher {
 		
@@ -40,7 +37,9 @@ package ua.com.syo.bcnettest.controller {
 			tickTimer.addEventListener(TimerEvent.TIMER, timerHandler);
 			
 			tickTimer.start();
-			for (var i:int = 1; i < 10; i++) {
+			addObject("user", 5, 5, true);
+			
+			for (var i:int = 2; i < 10; i++) {
 				addObject(i.toString(), 1, 1);
 			}
 		}
@@ -53,8 +52,8 @@ package ua.com.syo.bcnettest.controller {
 			}
 		}
 		
-		public function addObject(id:String, gX:int, gY:int, dir:int = 2):void {
-			var t:Tank = new Tank(id);
+		public function addObject(id:String, gX:int, gY:int, isUser:Boolean = false, dir:int = 2):void {
+			var t:Tank = new Tank(id, isUser);
 			objectsDict[t.id] = t;
 			stageV.addObject(t, gX * StageData.cellW, gY * StageData.cellH);
 			t.direction = dir;
