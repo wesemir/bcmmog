@@ -1,4 +1,6 @@
 package {
+	import cmodule.as3_crypto_wrapper.CLibInit;
+	
 	import flash.display.Sprite;
 	
 	import ua.com.syo.bcnettest.controller.Controller;
