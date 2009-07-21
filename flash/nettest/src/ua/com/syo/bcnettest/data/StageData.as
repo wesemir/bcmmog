@@ -1,4 +1,6 @@
 package ua.com.syo.bcnettest.data {
+	import ua.com.syo.utils.log.Logger;
+	
 
 	public class StageData {
 		
@@ -54,6 +56,9 @@ package ua.com.syo.bcnettest.data {
 		}
 		
 		private static function parseMap():void {
+			
+			Logger.DEBUG("CryptoWrapper: " + CryptoWrapper.prng_random(1));
+			
 			mArray = new Array();
 			for (var m:int = 0; m < StageData.stageW; m++) {
 				mArray[m] = new Array();

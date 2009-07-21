@@ -1,4 +1,6 @@
 package ua.com.syo.bcnettest.data {
+	import cmodule.as3_crypto_wrapper.CLibInit;
+	
 	import ua.com.syo.bcnettest.model.net.ServerProxy;
 	
 
@@ -6,7 +8,6 @@ package ua.com.syo.bcnettest.data {
 		
 		// socket, http, offline
 		public static var connectionType:String = ServerProxy.OFFLINE_CONNECTION_TYPE;
-		
 	}
 }
 
